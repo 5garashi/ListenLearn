@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
 <!--
-  ファイル名 / File: denken_kikinagashi_player_combined_v2.html
-  概要 / Description: 電験三種・電験二種一次試験 聞き流し暗記プレーヤー統合版 v2（試験・科目・個別セット選択対応、30セット、1006問内蔵）
+  ファイル名 / File: denken_kikinagashi_player_combined_v3.html
+  概要 / Description: 電験三種・電験二種一次試験 聞き流し暗記プレーヤー統合版 v3（回答欄レイアウト、即時回答読み上げ、0秒ポーズ対応）
   作成者 / Author: 5garashi.com設計事務所 / 5garashi.com Design Office
   更新日 / Updated: 2026-07-23
   ライセンス / License: MIT
@@ -44,7 +44,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>聞き流し暗記プレーヤー 統合版 v2｜電験三種・電験二種</title>
+<title>聞き流し暗記プレーヤー 統合版 v3｜電験三種・電験二種</title>
 <meta name="description" content="電験三種と電験二種一次試験の1006問を、問題・考える間・答え・解説の順に読み上げる学習プレーヤー。">
 <meta name="theme-color" content="#FFE699">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3C%21--%0A%20%20%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D%20%2F%20File%3A%205garashi_mark_simple.svg%0A%20%20%E6%A6%82%E8%A6%81%20%2F%20Description%3A%20%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%9E%E3%83%BC%E3%82%AF%28%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E7%89%88%E3%83%BB%E5%9F%BA%E6%9C%AC%29volt%20%23B92613%20%2F%20Symbol%20mark%2C%20simple%20%28primary%29%0A%20%20%E4%BD%9C%E6%88%90%E8%80%85%20%2F%20Author%3A%205garashi.com%E8%A8%AD%E8%A8%88%E4%BA%8B%E5%8B%99%E6%89%80%20%2F%205garashi.com%20Design%20Office%0A%20%20%E4%BD%9C%E6%88%90%E6%97%A5%20%2F%20Created%3A%202026-07-11%20%20%E7%89%88%20%2F%20Version%3A%204.3%0A%20%20%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%20%2F%20License%3A%20CC%20BY-ND%204.0%0A%20%20Copyright%20%28c%29%202026%205garashi.com%20Design%20Office%0A%20%20SPDX-License-Identifier%3A%20CC-BY-ND-4.0%0A--%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20560%20450%22%3E%0A%20%20%3Cg%20fill%3D%22%23B92613%22%3E%0A%20%20%20%20%3Cpath%20transform%3D%22translate%28165%2C235%29%20rotate%288%29%22%20d%3D%22M0%2C-190%20C22%2C-126%2022%2C126%200%2C190%20C-22%2C126%20-22%2C-126%200%2C-190%20Z%22%2F%3E%0A%20%20%20%20%3Cpath%20transform%3D%22translate%28245%2C235%29%20rotate%288%29%22%20d%3D%22M0%2C-190%20C22%2C-126%2022%2C126%200%2C190%20C-22%2C126%20-22%2C-126%200%2C-190%20Z%22%2F%3E%0A%20%20%20%20%3Cpath%20transform%3D%22translate%28325%2C235%29%20rotate%288%29%22%20d%3D%22M0%2C-190%20C22%2C-126%2022%2C126%200%2C190%20C-22%2C126%20-22%2C-126%200%2C-190%20Z%22%2F%3E%0A%20%20%20%20%3Cpath%20transform%3D%22translate%28405%2C235%29%20rotate%288%29%22%20d%3D%22M0%2C-190%20C22%2C-126%2022%2C126%200%2C190%20C-22%2C126%20-22%2C-126%200%2C-190%20Z%22%2F%3E%0A%20%20%20%20%3Cpath%20transform%3D%22translate%28280%2C180%29%20rotate%28-4%29%22%20d%3D%22M-248%2C0%20C-160%2C-27%20160%2C-27%20248%2C0%20C160%2C27%20-160%2C27%20-248%2C0%20Z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A">
@@ -213,8 +213,8 @@ main{
   padding:16px 0 0;
   border-top:1.5px dashed var(--line);
   display:grid;
-  grid-template-columns:auto minmax(0,auto) minmax(0,1fr);
-  align-items:baseline;
+  grid-template-columns:auto minmax(0,1fr);
+  align-items:start;
   gap:12px;
   min-height:72px;
 }
@@ -225,8 +225,10 @@ main{
   font-weight:500;
   letter-spacing:.08em;
   white-space:nowrap;
+  grid-row:1 / span 2;
 }
 .answer .val{
+  grid-column:2;
   color:var(--volt-deep);
   font-size:clamp(27px,5vw,38px);
   font-weight:700;
@@ -236,6 +238,7 @@ main{
   transition:opacity .2s ease;
 }
 .answer .memo{
+  grid-column:2;
   color:var(--steel);
   font-size:12.5px;
   font-weight:400;
@@ -447,6 +450,7 @@ footer{
   .panel{grid-template-columns:1fr}
   .panel .full{grid-column:1}
   .answer{grid-template-columns:1fr;gap:4px}
+  .answer::before,.answer .val,.answer .memo{grid-column:1;grid-row:auto}
   .answer::before{margin-bottom:2px}
   .answer .val{font-size:31px}
   .study-dock{
@@ -554,6 +558,7 @@ footer{
     <div class="field">
       <label for="pauseSel">考える間(ポーズ)</label>
       <select id="pauseSel">
+        <option value="0">0秒</option>
         <option value="1" selected>1秒</option>
         <option value="2">2秒</option>
         <option value="4">4秒</option>
@@ -613,8 +618,8 @@ footer{
 <div id="helpOverlay" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
   <div class="helpcard" tabindex="-1">
     <h2 id="helpTitle">使い方</h2>
-    <b>再生の流れ</b>:▶で「問題 → 考える間 → 答え+解説」を自動で進めます。「答えを見る」は、読み上げを待たずに画面で確認したいときに使います。電験三種、電験二種、両試験の全問題に加え、各科目の全問題を1周するモードを選べます。初期設定は「電験三種・全問題を1周」です。
-    問題や考える間の途中で⏸→▶を押すと、続きを聞かずに<b>答えへスキップ</b>。
+    <b>再生の流れ</b>:▶で「問題 → 考える間 → 答え+解説」を自動で進めます。「答えを見る」を押すと、問題の読み上げや考える間を中止し、すぐに答えを表示・読み上げます。電験三種、電験二種、両試験の全問題に加え、各科目の全問題を1周するモードを選べます。初期設定は「電験三種・全問題を1周」です。
+    一時停止後に▶を押すと、停止した箇所の続きから再開します。
     答えの読み上げ中の⏸→▶は<b>続きから再開</b>します。⏮⏭は問題の頭から移動します。
     <h3>チェックの使い分け</h3>
     <b class="help-ok">覚えた!</b>:くり返し時にスキップ(ページを閉じるとリセット)。<br>
@@ -633,7 +638,7 @@ footer{
       <tr><td class="k">O</td><td>ヤバイ!だけ再生 の切替</td></tr>
       <tr><td class="k">S / R</td><td>シャッフル / くり返し の切替</td></tr>
       <tr><td class="k">E / D</td><td>復唱 / 解説読み上げ の切替</td></tr>
-      <tr><td class="k">1 2 3 4</td><td>考える間を 1・2・4・7秒 に設定</td></tr>
+      <tr><td class="k">0 1 2 3 4</td><td>考える間を 0・1・2・4・7秒 に設定</td></tr>
       <tr><td class="k">↑ / ↓</td><td>読み上げ速度を 上げる / 下げる</td></tr>
       <tr><td class="k">H または ?</td><td>このヘルプを表示 / 閉じる</td></tr>
       <tr><td class="k">Esc</td><td>ヘルプを閉じる</td></tr>
@@ -646,7 +651,7 @@ footer{
   問題・考える間に一時停止して再開すると、答えへ移動します。答えの読み上げ中は、続きから再開します。<br>
   <span class="warn">画面をロックすると音声が止まる</span>ことがあります。スマートフォンでは画面をオンにしたまま使用してください。<br>
   「ヤバイ!」はブラウザに保存されます。「覚えた」と読み込んだ問題は、ページを閉じるとリセットされます。
-  <span class="footer-signature">5garashi.com設計事務所 / 5garashi.com Design Office — 統合版 v2 — 2026-07-23 — MIT License</span>
+  <span class="footer-signature">5garashi.com設計事務所 / 5garashi.com Design Office — 統合版 v3 — 2026-07-23 — MIT License</span>
 </footer>
 
 <script>
@@ -2897,11 +2902,11 @@ const BUILTIN_SETS = [
 問24。年間発電電力量400 [GWh]、定格出力100 [MW]の発電所。設備利用率は約何 [%]。、、、答えは、45.7 [%]。解説、400000 / (100 × 8760) × 100 ≒ 45.7 [%]。`}
 ];
 
-// ---------- 読み上げ変換表 v7（単位・数式・誤読対策） ----------
+// ---------- 読み上げ変換表 v8（単位・数式・誤読対策） ----------
 // 表示は変えず、読み上げ直前にだけ左→右へ置換する。
 // フォーマット: 1行1件「対象→カタカナ読み」。#で始まる行はコメント。
 // 行頭に「re:」を付けると左側を正規表現として扱う。上の行から順に適用。
-const DEFAULT_YOMI = `# 内蔵の読み上げ変換表 v7
+const DEFAULT_YOMI = `# 内蔵の読み上げ変換表 v8
 # 上から順に適用。複合単位を単独単位より先に置く。
 
 # 誤読しやすい専門用語
@@ -2918,6 +2923,7 @@ const DEFAULT_YOMI = `# 内蔵の読み上げ変換表 v7
 比誘電率→ヒユウデンリツ
 誘電率→ユウデンリツ
 電界→デンカイ
+無限遠→ムゲンエン
 電位→デンイ
 磁束鎖交数→ジソクサコウスウ
 磁束密度→ジソクミツド
@@ -3475,6 +3481,7 @@ let playing = false;   // 再生セッション中か
 let paused = false;    // 一時停止中か
 let phase = "";        // いまのフェーズ: question / think / answer
 let skipRequested = false; // 問題・考える間からの再開時に答えへ飛ぶ合図
+let answerAtStartRequested = false; // 停止中の「答えを見る」から答えを即時再生する合図
 let session = 0;       // 再生セッション番号(巻き戻し等で残った古いループを無効化する)
 let phaseLabel = "";   // 現在のフェーズ表示
 let pauseSec = 1, rate = 2.0;  // デフォルト:考える間1秒・超高速
@@ -3656,7 +3663,8 @@ const ring = $("ringfg");
 ring.style.strokeDasharray = CIRC; ring.style.strokeDashoffset = CIRC;
 function setRing(f){ring.style.strokeDashoffset = CIRC*(1-f);}
 async function countdown(sec, tok){
-  const steps = Math.max(1, Math.round(sec*5));
+  if(sec <= 0){ setRing(1); return; }
+  const steps = Math.max(1, Math.round(sec*20)); // 50ms間隔で「答えを見る」に素早く反応
   for(let i=0;i<=steps;i++){
     if(!playing || tok !== session || skipRequested) return;
     await waitWhilePaused();          // 一時停止中はリングも凍結
@@ -3718,12 +3726,15 @@ async function playLoop(tok){
     const d = DATA[idx];
     setRing(0);
     renderQ(idx, true);
-    skipRequested = false;
+    skipRequested = answerAtStartRequested;
+    answerAtStartRequested = false;
     await waitWhilePaused(); if(!alive()) return;
-    phase = "question";
-    setPhase("問題を読み上げ中");
-    await speak("問い。" + d.s, tok);
-    if(!alive()) return;
+    if(!skipRequested){
+      phase = "question";
+      setPhase("問題を読み上げ中");
+      await speak("問い。" + d.s, tok);
+      if(!alive()) return;
+    }
 
     if(!skipRequested){
       await waitWhilePaused(); if(!alive()) return;
@@ -3772,9 +3783,10 @@ function setPlayButton(symbol, label){
   $("playBtn").setAttribute("aria-label", label);
   $("playBtn").title = label;
 }
-function start(){
+function start(answerNow){
   if(order.length===0){ $("stageLabel").textContent = "再生できる問題がありません"; return; }
   session++;                 // 新しいセッションを開始(残っている古いループを無効化)
+  answerAtStartRequested = !!answerNow;
   playing = true; paused = false;
   setPlayButton("❚❚", "一時停止");
   requestWakeLock();
@@ -3816,7 +3828,7 @@ function resumeNow(){
 function stop(label){
   session++;                 // 停止時も古いループを即時無効化
   playing = false; paused = false; retryFlag = false;
-  skipRequested = false; phase = "";
+  skipRequested = false; answerAtStartRequested = false; phase = "";
   clearTimers();
   speechSynthesis.cancel();
   setRing(0);
@@ -3961,23 +3973,37 @@ $("builtinBtn").addEventListener("click", ()=>{
 });
 
 // ---------- 操作 ----------
+function revealAnswerNow(){
+  if(!order.length) return;
+  if(!playing){
+    start(true);
+    return;
+  }
+  if(phase === "question" || phase === "think" || phase === ""){
+    // 一時停止中でも解除し、古い再生ループの終了を待たず答えから新しく再生する。
+    session++;
+    const tok = session;
+    paused = false;
+    skipRequested = false;
+    answerAtStartRequested = true;
+    setPlayButton("❚❚", "一時停止");
+    setPhase("答えへ移動中");
+    requestWakeLock();
+    try{
+      speechSynthesis.resume();
+      speechSynthesis.cancel();
+    }catch(e){}
+    // cancelが音声エンジンに反映された直後のタスクで、答えの読み上げを開始する。
+    setTimeout(()=>{ if(playing && tok === session) playLoop(tok); }, 0);
+  }
+}
 $("playBtn").addEventListener("click", ()=>{
   if(!playing) start();          // 停止中 → 再生開始
   else if(!paused) pauseNow();   // 再生中 → その場で一時停止
   else resumeNow();              // 一時停止中 → 続きから再開
 });
 $("revealBtn").addEventListener("click", ()=>{
-  if(!order.length) return;
-  if(playing){
-    if(paused) resumeNow();
-    else if(phase === "question" || phase === "think"){
-      skipRequested = true;
-      try{ speechSynthesis.cancel(); }catch(e){}
-    }
-  }else{
-    renderQ(order[pos], false);
-    setPhase("答えを表示中");
-  }
+  revealAnswerNow();
 });
 $("nextBtn").addEventListener("click", ()=>{ const was=playing; stop(); if(!order.length) return; pos=(pos+1)%order.length; renderQ(order[pos],true); if(was) start(); });
 $("prevBtn").addEventListener("click", ()=>{ const was=playing; stop(); if(!order.length) return; pos=(pos-1+order.length)%order.length; renderQ(order[pos],true); if(was) start(); });
@@ -4043,22 +4069,14 @@ $("helpOverlay").addEventListener("keydown", e=>{
 
 // ---------- ショートカットキー ----------
 function clickToggle(id){ const el = $(id); el.checked = !el.checked; el.dispatchEvent(new Event("change")); }
-function setPauseIndex(i){ const el = $("pauseSel"); el.selectedIndex = i; el.dispatchEvent(new Event("change")); }
+function setPauseValue(v){ const el = $("pauseSel"); el.value = String(v); el.dispatchEvent(new Event("change")); }
 function cycleRate(dir){
   const el = $("rateSel");
   el.selectedIndex = Math.max(0, Math.min(el.options.length - 1, el.selectedIndex + dir));
   el.dispatchEvent(new Event("change"));
 }
 function skipToAnswer(){
-  if(playing && !paused && (phase === "question" || phase === "think")){
-    skipRequested = true;
-    try{ speechSynthesis.cancel(); }catch(e){}
-  } else if(playing && paused){
-    resumeNow();
-  } else if(!playing && order.length){
-    renderQ(order[pos], false);
-    setPhase("答えを表示中");
-  }
+  revealAnswerNow();
 }
 document.addEventListener("keydown", e=>{
   const t = e.target;
@@ -4083,10 +4101,11 @@ document.addEventListener("keydown", e=>{
     case "r": case "R": clickToggle("loopChk"); break;
     case "e": case "E": clickToggle("echoChk"); break;
     case "d": case "D": clickToggle("kaisetsuChk"); break;
-    case "1": setPauseIndex(0); break;
-    case "2": setPauseIndex(1); break;
-    case "3": setPauseIndex(2); break;
-    case "4": setPauseIndex(3); break;
+    case "0": setPauseValue(0); break;
+    case "1": setPauseValue(1); break;
+    case "2": setPauseValue(2); break;
+    case "3": setPauseValue(4); break;
+    case "4": setPauseValue(7); break;
     case "ArrowUp":   e.preventDefault(); cycleRate(1); break;
     case "ArrowDown": e.preventDefault(); cycleRate(-1); break;
     case "h": case "H": case "?": toggleHelp(); break;
